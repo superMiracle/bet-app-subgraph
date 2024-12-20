@@ -1,0 +1,44 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: MyBet
+    network: blast-testnet
+    source:
+      address: "0xb11604f3458022d676b8b8f1a943be9fcf429d98"
+      abi: MyBet
+      startBlock: 15005115
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - OwnershipTransferred
+        - RewardClaimed
+        - RoundFinished
+        - RoundWinners
+        - Transfer
+        - UserBetted
+      abis:
+        - name: MyBet
+          file: ./abis/MyBet.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: RewardClaimed(indexed address,indexed uint256,uint256)
+          handler: handleRewardClaimed
+        - event: RoundFinished(indexed uint256,uint8)
+          handler: handleRoundFinished
+        - event: RoundWinners(indexed uint256,indexed address,uint256)
+          handler: handleRoundWinners
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+        - event: UserBetted(indexed address,indexed uint256,indexed uint8,uint256)
+          handler: handleUserBetted
+      file: ./src/my-bet.ts

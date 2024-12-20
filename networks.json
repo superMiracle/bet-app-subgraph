@@ -1,0 +1,8 @@
+{
+  "blast-testnet": {
+    "MyBet": {
+      "address": "0xb11604f3458022d676b8b8f1a943be9fcf429d98",
+      "startBlock": 15005115
+    }
+  }
+}
