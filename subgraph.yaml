@@ -8,7 +8,7 @@ dataSources:
     name: MyBet
     network: blast-testnet
     source:
-      address: "0xb11604f3458022d676b8b8f1a943be9fcf429d98"
+      address: '0xb11604f3458022d676b8b8f1a943be9fcf429d98'
       abi: MyBet
       startBlock: 15005115
     mapping:
@@ -27,8 +27,6 @@ dataSources:
         - name: MyBet
           file: ./abis/MyBet.json
       eventHandlers:
-        - event: Approval(indexed address,indexed address,uint256)
-          handler: handleApproval
         - event: OwnershipTransferred(indexed address,indexed address)
           handler: handleOwnershipTransferred
         - event: RewardClaimed(indexed address,indexed uint256,uint256)
@@ -37,8 +35,6 @@ dataSources:
           handler: handleRoundFinished
         - event: RoundWinners(indexed uint256,indexed address,uint256)
           handler: handleRoundWinners
-        - event: Transfer(indexed address,indexed address,uint256)
-          handler: handleTransfer
         - event: UserBetted(indexed address,indexed uint256,indexed uint8,uint256)
           handler: handleUserBetted
       file: ./src/my-bet.ts
